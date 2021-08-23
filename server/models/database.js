@@ -1,4 +1,4 @@
-const DB_NAME = process.env.DB_NAME;
+const DB_NAME = process.env.DB_NAME || "TODO_APP";
 
 const connectionURI = `mongodb://localhost:27017/${DB_NAME}`;
 

@@ -36,8 +36,10 @@ You will need a running instance of MongoDB.
 - \[Optional\] create a .env file using .env example to change environment variables.
 - Run the following within both the client and the server folders:
 
-  $ npm install
-  $ npm start
+  ```
+  npm install
+  npm start
+  ```
 
 ### Webpack
 
@@ -74,3 +76,7 @@ By understanding JavaScript, TypeScript saves you time catching errors and provi
 ### Antd
 
 Antd allows us to use pre-defined UI components that look and feel great.
+
+```
+
+```
