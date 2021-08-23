@@ -41,18 +41,6 @@ export const removeTodo =
     }
   };
 
-export const updateTodo =
-  (id: TodosApi.TodoId, changes: TodosApi.TodoEditableProps) =>
-  async (dispatch: AppDispatch) => {
-    try {
-      await TodosApi.updateTodo(id, changes);
-
-      dispatch(todosActions.updateTodo({ id, changes }));
-    } catch (error) {
-      throw error;
-    }
-  };
-
 export const toggleTodo =
   (id: TodosApi.TodoId) => async (dispatch: AppDispatch) => {
     try {
@@ -63,3 +51,16 @@ export const toggleTodo =
       throw error;
     }
   };
+
+// NOT IN USE
+// export const updateTodo =
+//   (id: TodosApi.TodoId, changes: TodosApi.TodoEditableProps) =>
+//   async (dispatch: AppDispatch) => {
+//     try {
+//       await TodosApi.updateTodo(id, changes);
+
+//       dispatch(todosActions.updateTodo({ id, changes }));
+//     } catch (error) {
+//       throw error;
+//     }
+//   };

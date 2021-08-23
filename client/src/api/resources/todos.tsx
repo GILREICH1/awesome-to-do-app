@@ -1,4 +1,4 @@
-import { CategoryId, sleep, Category } from "../";
+import { CategoryId, Category } from "../";
 
 const server_url = "http://localhost:3001/todos";
 
@@ -27,7 +27,7 @@ export type TodoEditableProps = Partial<TodoCreationProps> & {
 };
 export type TodoWithChildEntities = Todo & { categories?: Category[] };
 
-export async function fetchTodos(ids?: TodoId[]): Promise<Todo[]> {
+export async function fetchTodos(): Promise<Todo[]> {
   const JSONtodos = await fetch(`${server_url}`);
   const response = await JSONtodos.json();
   return response;
@@ -69,9 +69,10 @@ export async function removeTodo(id: TodoId): Promise<void> {
   return todoID;
 }
 
-export async function updateTodo(
-  id: TodoId,
-  changes: TodoEditableProps
-): Promise<void> {
-  await sleep(200);
-}
+// NOT IN USE
+// export async function updateTodo(
+//   id: TodoId,
+//   changes: TodoEditableProps
+// ): Promise<void> {
+//   await sleep(200);
+// }
