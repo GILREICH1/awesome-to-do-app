@@ -6,7 +6,7 @@ async function fetchTodos(_, res) {
     const todosWithID = todos.map((todo) => ({ ...todo, id: todo._id }));
     res.status(200).send(todosWithID);
   } catch (err) {
-    res.status(400).send("failed to fetch");
+    res.status(500).send(err);
   }
 }
 
@@ -17,7 +17,7 @@ async function addTodo({ body } = {}, res) {
     const dbResponse = await newTODO.save();
     res.status(201).send(dbResponse._id);
   } catch (err) {
-    res.status(400).send("failed to save");
+    res.status(500).send(err);
   }
 }
 
@@ -30,7 +30,7 @@ async function toggleTodo({ body }, res) {
     });
     res.status(200).send(dbResponse._id);
   } catch (err) {
-    res.status(400).send("failed to update");
+    res.status(500).send(err);
   }
 }
 
@@ -40,7 +40,7 @@ async function deleteTodo({ body }, res) {
     const dbResponse = await TODO.deleteOne({ _id });
     res.status(201).send(dbResponse);
   } catch (err) {
-    res.status(400).send("failed to update");
+    res.status(500).send(err);
   }
 }
 
