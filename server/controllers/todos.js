@@ -24,7 +24,6 @@ async function addTodo({ body } = {}, res) {
 async function toggleTodo({ body }, res) {
   try {
     const { _id } = body;
-    // const newTODO = new );
     const dbResponse = await TODO.findOne({ _id }, function (err, todo) {
       todo.completed = !todo.completed;
       todo.save();
@@ -35,8 +34,16 @@ async function toggleTodo({ body }, res) {
   }
 }
 
-async function removeTodo(id = "") {}
+async function deleteTodo({ body }, res) {
+  try {
+    const { _id } = body;
+    const dbResponse = await TODO.deleteOne({ _id });
+    res.status(201).send(dbResponse);
+  } catch (err) {
+    res.status(400).send("failed to update");
+  }
+}
 
 // export async function updateTodo(id ="", changes) {}
 
-module.exports = { addTodo, fetchTodos, toggleTodo };
+module.exports = { addTodo, fetchTodos, toggleTodo, deleteTodo };

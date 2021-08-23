@@ -58,7 +58,15 @@ export async function toggleTodo(id: TodoId): Promise<void> {
 }
 
 export async function removeTodo(id: TodoId): Promise<void> {
-  await sleep(200);
+  const JSONtodoID = await fetch(`${server_url}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ _id: id }),
+  });
+  const todoID = await JSONtodoID.json();
+  return todoID;
 }
 
 export async function updateTodo(
