@@ -27,7 +27,6 @@ export type TodoEditableProps = Partial<TodoCreationProps> & {
 };
 export type TodoWithChildEntities = Todo & { categories?: Category[] };
 
-// TODO implement API calls
 export async function fetchTodos(ids?: TodoId[]): Promise<Todo[]> {
   const JSONtodos = await fetch(`${server_url}`);
   const response = await JSONtodos.json();
@@ -43,12 +42,19 @@ export async function addTodo(todo: TodoCreationProps): Promise<TodoId> {
     body: JSON.stringify(todo),
   });
   const todoID = await JSONtodoID.json();
-  console.log(todoID);
   return todoID;
 }
 
 export async function toggleTodo(id: TodoId): Promise<void> {
-  await sleep(200);
+  const JSONtodoID = await fetch(`${server_url}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ _id: id }),
+  });
+  const todoID = await JSONtodoID.json();
+  return todoID;
 }
 
 export async function removeTodo(id: TodoId): Promise<void> {
