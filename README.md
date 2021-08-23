@@ -5,15 +5,15 @@
   <a href="https://itailv.github.io/awesome-todo-app/" target="_blank">Live version</a>
 </div>
 
-
 ## Introduction
 
-This app was made as an example for writing modern web apps with stable best-practices solutions.
+This app is based off of: https://github.com/itailv/awesome-todo-app.
 
 <a href="https://itailv.github.io/awesome-todo-app/">
    <img width="800px" src=".github/Todos-Preview.png"/>
 </a>
 
+Various changes have been made, including a backend that allows for persistent data storage.
 
 ## Technologies used
 
@@ -24,35 +24,20 @@ This project follows a custom structure that combines the following:
 - [`Redux-Toolkit`](https://redux-toolkit.js.org/) for managing the app's state;
 - [`Antd`](https://ant.design/) as the UI library;
 - [`Webpack`](https://webpack.js.org/) as the main build tool for this app;
+- [`Express`](https://expressjs.com/) as the Backend framework;
 
 ... and some [more stuff](./package.json).
 
-
 ## Running locally
 
-### Setting up the project
+You will need a running instance of MongoDB.
 
-Clone the repository and run the following:
+- Clone the repository.
+- \[Optional\] create a .env file using .env example to change environment variables.
+- Run the following within both the client and the server folders:
 
-    $ npm install
-
-### Running the dev server
-
-Running the following will start the dev server and will automatically open the webapp in your
-default browser:
-
-    $ npm start
-
-### Building
-
-In order to build the app for production, run the build script:
-
-    $ npm run build
-
-
-## Project structure
-
-Everything goes under the `./src` folder. Distribution-ready file will wait in the `./dist` folder.
+  $ npm install
+  $ npm start
 
 ### Webpack
 
@@ -89,10 +74,3 @@ By understanding JavaScript, TypeScript saves you time catching errors and provi
 ### Antd
 
 Antd allows us to use pre-defined UI components that look and feel great.
-
-
----
-
-## License
-
-MIT © [Itai Lavie](http://itailv.com/)
