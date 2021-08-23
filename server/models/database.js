@@ -1,6 +1,7 @@
 const DB_NAME = process.env.DB_NAME || "TODO_APP";
+const DB_PORT = process.env.DB_PORT || "27017";
 
-const connectionURI = `mongodb://localhost:27017/${DB_NAME}`;
+const connectionURI = `mongodb://localhost:${DB_PORT}/${DB_NAME}`;
 
 const mongoose = require("mongoose");
 mongoose.connect(connectionURI, {
