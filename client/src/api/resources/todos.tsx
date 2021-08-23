@@ -1,6 +1,6 @@
-import { v4 as uuid } from "uuid";
-
 import { CategoryId, sleep, Category } from "../";
+
+const server_url = "http://localhost:3001/todos";
 
 export type TodoId = string;
 export type TodoContent = string;
@@ -29,15 +29,22 @@ export type TodoWithChildEntities = Todo & { categories?: Category[] };
 
 // TODO implement API calls
 export async function fetchTodos(ids?: TodoId[]): Promise<Todo[]> {
-  await sleep(200);
-
-  return [];
+  const JSONtodos = await fetch(`${server_url}`);
+  const response = await JSONtodos.json();
+  return response;
 }
 
 export async function addTodo(todo: TodoCreationProps): Promise<TodoId> {
-  await sleep(200);
-  // returns id
-  return uuid();
+  const JSONtodoID = await fetch(`${server_url}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(todo),
+  });
+  const todoID = await JSONtodoID.json();
+  console.log(todoID);
+  return todoID;
 }
 
 export async function toggleTodo(id: TodoId): Promise<void> {

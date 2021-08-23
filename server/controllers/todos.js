@@ -2,8 +2,9 @@ const TODO = require("../models/todos");
 
 async function fetchTodos(_, res) {
   try {
-    const todos = await TODO.find();
-    res.status(200).send(todos);
+    const todos = await TODO.find().lean().exec();
+    const todosWithID = todos.map((todo) => ({ ...todo, id: todo._id }));
+    res.status(200).send(todosWithID);
   } catch (err) {
     res.status(400).send("failed to fetch");
   }
