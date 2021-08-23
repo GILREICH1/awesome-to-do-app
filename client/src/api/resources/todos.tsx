@@ -36,7 +36,7 @@ export async function fetchTodos(ids?: TodoId[]): Promise<Todo[]> {
 
 export async function addTodo(todo: TodoCreationProps): Promise<TodoId> {
   await sleep(200);
-
+  // returns id
   return uuid();
 }
 
